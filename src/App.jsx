@@ -6,7 +6,7 @@ function Formulario({ adicionarItem }) {
   const [quantidade, setQuantidade] = useState("1");
   
   return (
-    <form className="form-add-item" onSubmit={ (event) => {event.preventDefault(); adicionarItem(nome, quantidade); setNome(""); setQuantidade("1")}} action="" method="post" >
+    <form className="form-add-item" action="" method="post" >
       <fieldset>
         <div className="form-group mb-3">
           <label htmlFor="item">Adicionar Novo Item na Lista:</label>
@@ -16,7 +16,7 @@ function Formulario({ adicionarItem }) {
           <label htmlFor="item">Quantidade:</label>
           <input type="number" className="form-control" id="qtde" value={quantidade} onChange={(event) => setQuantidade(event.target.value)} required />
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="button" className="btn btn-primary" onClick={ (event) => {event.preventDefault(); adicionarItem(nome, quantidade); setNome(""); setQuantidade("1")}}>
           Adicionar
         </button>
       </fieldset>
@@ -44,7 +44,6 @@ function App() {
 
   function adicionarItem(nome, quantidade){
     setItens([...itens, {nome, quantidade}]);
-    console.log(itens);
   }
 
   return (
