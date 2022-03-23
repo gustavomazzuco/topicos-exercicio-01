@@ -46,7 +46,9 @@ function App() {
   const [itens, setItens] = useState([]);
 
   function limparLista(){
-    setItens([]);
+    if (confirm("Deseja limpar lista?")) {
+      setItens([]);
+    }
   }
 
   function adicionarItem(nome, quantidade){
