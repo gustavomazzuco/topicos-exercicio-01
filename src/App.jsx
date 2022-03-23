@@ -16,7 +16,7 @@ function Formulario({ adicionarItem }) {
           <label htmlFor="item">Quantidade:</label>
           <input type="number" className="form-control" id="qtde" value={quantidade} onChange={(event) => setQuantidade(event.target.value)} required />
         </div>
-        <button type="button" className="btn btn-primary" onClick={ (event) => {event.preventDefault(); adicionarItem(nome, quantidade); setNome(""); setQuantidade("1")}}>
+        <button type="button" className="btn btn-primary" onClick={ (event) => {adicionarItem(nome, quantidade); setNome(""); setQuantidade("1")}}>
           Adicionar
         </button>
       </fieldset>
