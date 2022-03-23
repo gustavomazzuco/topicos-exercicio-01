@@ -32,7 +32,7 @@ function ListaItens({itens = []}){
     <div className="lista-compras-container">
       <ul className="lista-items">
         {itens.length === 0 ? (
-        <li className="empty">Nenhum item adicionado</li>
+        <li>Nenhum item adicionado</li>
         ) : (
         itens.map((produto) => (
           <li>{produto.nome} - {produto.quantidade}</li>
@@ -46,7 +46,7 @@ function App() {
   const [itens, setItens] = useState([]);
 
   function limparLista(){
-    if (confirm("Deseja limpar lista?")) {
+    if (confirm("Deseja limpar a lista?")) {
       setItens([]);
     }
   }
