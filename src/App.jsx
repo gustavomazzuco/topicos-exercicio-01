@@ -1,7 +1,7 @@
 import "./App.css";
 import { useState } from "react";
 
-function Formulario({ adicionarItem }) {
+function Formulario({ adicionarItem, limparLista }) {
   const [nome, setNome] = useState("");
   const [quantidade, setQuantidade] = useState("1");
   
@@ -16,8 +16,11 @@ function Formulario({ adicionarItem }) {
           <label htmlFor="item">Quantidade:</label>
           <input type="number" className="form-control" id="qtde" value={quantidade} onChange={(event) => setQuantidade(event.target.value)} required />
         </div>
-        <button type="button" className="btn btn-primary" onClick={ (event) => {adicionarItem(nome, quantidade); setNome(""); setQuantidade("1")}}>
+        <button type="button" className="btn btn-primary" onClick={ () => {adicionarItem(nome, quantidade); setNome(""); setQuantidade("1")}}>
           Adicionar
+        </button>
+        <button type="button" style={{marginLeft: 9}} className="btn btn-danger" onClick={ () => {limparLista(); setNome(""); setQuantidade("1")}}>
+          Limpar Lista
         </button>
       </fieldset>
     </form>
@@ -42,6 +45,10 @@ function ListaItens({itens = []}){
 function App() {
   const [itens, setItens] = useState([]);
 
+  function limparLista(){
+    setItens([]);
+  }
+
   function adicionarItem(nome, quantidade){
     setItens([...itens, {nome, quantidade}]);
   }
@@ -52,7 +59,7 @@ function App() {
         <h2>Lista de Compras:</h2>
       </header>      
     <ListaItens itens={itens} />
-    <Formulario adicionarItem={adicionarItem} />
+    <Formulario adicionarItem={adicionarItem} limparLista={limparLista} />
     </div>
   );
 }
